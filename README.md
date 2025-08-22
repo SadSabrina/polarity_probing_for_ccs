@@ -65,9 +65,6 @@ This folder contains Jupyter notebooks for running and plotting **Polarity-Aware
 
 # **`data/` — datasets introduced in paper**
 
-# PA_CCS_PROBING_APPENDIX.pdf
-
-Pdf-file with appendix of the paper.
 
 #### Requirements
 
