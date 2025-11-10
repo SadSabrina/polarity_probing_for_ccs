@@ -1,4 +1,6 @@
-**Supplementary Materials for the work "Polarity-Aware Probing for Quantifying Latent Alignment in Language Models."**
+# **"Polarity-Aware Probing for Quantifying Latent Alignment in Language Models."**
+
+![img](data/teaser/ccs_teaser.pdf)
 
 # `code/` — Source Code for PA-CCS Evaluation
 
