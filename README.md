@@ -81,11 +81,6 @@ The primary goal of this repository is to ensure the reproducibility of the resu
 
 ## **Files and folders**
 
-TO DO:
-
-- [ ] make cleaner
-- [ ] make readme for datasets on HF
-
 **Repo structure:**
 
 ```bash
@@ -107,7 +102,9 @@ data/
 
 notebooks/
   ├── ccs_deberta_pretr.ipynb
-  └── ccs_Meta-Llama-3-8B-Instruct.ipynb
+  ├── ccs_Meta-Llama-3-8B-Instruct.ipynb
+  └── ...
+  
 
 ```
 
