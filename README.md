@@ -6,17 +6,42 @@ Source code for the paper ["Polarity-Aware Probing for Quantifying Latent Alignm
 
 ## **Abstract**
 
-Recent progress in unsupervised probing methods, notably <span style="color:blue">[Contrast‑Consistent Search (CCS)](https://arxiv.org/pdf/2309.06991)</span>, has enabled the extraction of latent beliefs in language models without relying on token-level outputs. As these probes offer lightweight diagnostic tools with low alignment tax, a central question arises: *can they effectively assess model alignment?* We investigate this by examining CCS's sensitivity to harmful vs. safe statements and introducing Polarity‑Aware CCS (PA‑CCS), which evaluates whether a model's internal representations remain consistent under polarity inversion. We propose two alignment-oriented metrics — **Polar‑Consistency** and **Contradiction Index** — to quantify the semantic robustness of a model's latent knowledge. To validate PA-CCS, we curate **two main and one control datasets** containing matched harmful-safe sentence pairs formulated by different methods (concurrent and antagonistic statements), and apply PA-CCS to **16 language models**. Our results demonstrate that PA‑CCS reveals both architectural and layer-specific differences in the encoding of latent harmful knowledge. Interestingly, replacing the negation token with a meaningless marker degrades the PA‑CCS scores of models with aligned representations. In contrast, models lacking robust internal calibration do not show this degradation. Our findings highlight the potential of unsupervised probing for alignment evaluation and call on the community to incorporate structural robustness checks into interpretability benchmarks.
+Recent progress in unsupervised probing methods, notably Contrast‑Consistent Search (CCS) (Stoehr et al. 2024), has enabled the extraction of latent beliefs in language models without relying on token-level outputs. As these probes offer lightweight diagnostic tools with low alignment tax, a central question arises: *can they effectively assess model alignment?* We investigate this by examining CCS's sensitivity to harmful vs. safe statements and introducing Polarity‑Aware CCS (PA‑CCS), which evaluates whether a model's internal representations remain consistent under polarity inversion. We propose two alignment-oriented metrics — **Polar‑Consistency** and **Contradiction Index** — to quantify the semantic robustness of a model's latent knowledge. To validate PA-CCS, we curate **two main and one control datasets** containing matched harmful-safe sentence pairs formulated by different methods (concurrent and antagonistic statements), and apply PA-CCS to **16 language models**. Our results demonstrate that PA‑CCS reveals both architectural and layer-specific differences in the encoding of latent harmful knowledge. Interestingly, replacing the negation token with a meaningless marker degrades the PA‑CCS scores of models with aligned representations. In contrast, models lacking robust internal calibration do not show this degradation. Our findings highlight the potential of unsupervised probing for alignment evaluation and call on the community to incorporate structural robustness checks into interpretability benchmarks.
+
+## Datasets
+
+The paper includes the release of new datasets containing contrasting pairs of "harmful/benign" statements.
+
+### Dataset Overview
+
+| Dataset | Link | Total Samples | Unique Observations | Harm-Safe Pairs | Purpose |
+|---------|------|--------------|---------------------|-----------------|---------|
+| Mixed dataset | [🤗 Huggingface](https://huggingface.co/datasets/SabrinaSadiekh/mixed_hate_dataset) | 1244 | 1244 | 622 | Tests whether CCS can distinguish harmful from safe beliefs in realistic, naturally varied formulations |
+| Not dataset | [🤗 Huggingface](https://huggingface.co/datasets/SabrinaSadiekh/not_hate_dataset) | 1250 | 1250 | 625 | Direct evaluation of how the model handles polarity flips in tightly aligned sentences |
+
+### Mixed Dataset Construction Methods
+
+| Method | Description | Proportion |
+|--------|-------------|------------|
+| Concurrent-based | Harmful and safe statements differ by rephrasing, while preserving semantic opposition | 74.7% |
+| Negation-based | One statement is the syntactic negation of the other | 26.3% |
+
+### Not Dataset Construction
+
+| Category | Contains "not" | Description |
+|----------|----------------|-------------|
+| Harmful version | 51% | Pairs where $x^{\text{harm}} = \texttt{not}(x^{\text{safe}})$ or vice versa |
+| Safe version | 49% | Controlled negation setting with tightly aligned sentences |
 
 ### **Datasets**
 
 The paper includes the release of new datasets containing contrasting pairs of "harmful/benign" statements. You can download datasets on Huggingface: [mixed dataset](https://huggingface.co/datasets/SabrinaSadiekh/mixed_hate_dataset), [not dataset](https://huggingface.co/datasets/SabrinaSadiekh/not_hate_dataset).
 
-#### **Data details** 
+#### **Data details**
 
 - Mixed dataset
 
-This dataset contains 1244 unique observations, 622 harm-safe pairs, constructed using two 
+This dataset contains 1244 unique observations, 622 harm-safe pairs, constructed using two
 
 1. *concurrent-based*, where harmful and safe statements differ by rephrasing, while preserving semantic opposition, 74.7%.
 2. *negation-based*, where one of the statements is the syntactic negation of the other.
@@ -26,8 +51,6 @@ This dataset tests whether CCS can distinguish harmful from safe beliefs in real
 
 This dataset contains 1250 samples in total, all constructed strictly via negation, such that for each pair, either $x^{\text{harm}} = \texttt{not}(x^{\text{safe}})$ or $x^{\text{safe}} = \texttt{not}(x^{\text{harm}})$. In the harmful version 51\% of pairs contain the word \texttt{not} and in the safe category 49\%. This controlled negation setting allows direct evaluation of how the model handles polarity flips in tightly aligned sentences.
 
-
-
 #### **How to use this repository?**
 
 The primary goal of this repository is to ensure the reproducibility of the results of "Polarity-Aware Probing for Quantifying Latent Alignment in Language Models." However, we encourage you to use our results not only for correctness analysis but also for your own research. You can:
@@ -36,14 +59,15 @@ The primary goal of this repository is to ensure the reproducibility of the resu
 2. Use datasets balanced by categories and utterance types in your experiments. Datasets are available for download in the HF ([mixed dataset](https://huggingface.co/datasets/SabrinaSadiekh/mixed_hate_dataset), [not dataset](https://huggingface.co/datasets/SabrinaSadiekh/not_hate_dataset)).
 3. Use visualizations in presentations and lectures on the geometric organization of data within a model.
 
-
 ## **Files and folders**
 
 TO DO:
+
 - [ ] make cleaner
 - [ ] make readme for datasets on HF
 
 **Repo structure:**
+
 ```bash
 code/
   ├── ccs.py
@@ -69,17 +93,15 @@ notebooks/
 
 ### **Description**
 
-
 #### `code/` — Source Code for PA-CCS Evaluation
-
 
 This directory contains all the necessary scripts for reproducing the experiments described in our paper on **Polarity-Aware Probing for Quantifying Latent Alignment in Language Models** for analyzing internal representations in language models.
 
 The code is organized to cleanly separate:
 
-*  Feature extraction (`extract.py`, `extract_llama.py`)
-*  Probing & analysis (`ccs.py`)
-*  Evaluation & reporting (`format_results.py`)
+- Feature extraction (`extract.py`, `extract_llama.py`)
+- Probing & analysis (`ccs.py`)
+- Evaluation & reporting (`format_results.py`)
 
 ##### Files
 
@@ -87,8 +109,8 @@ The code is organized to cleanly separate:
 
 Base implementation of the **Contrast Consistent Search (CCS)** method for linear probing of model representations.
 
-* Implements the linear probing training and evaluation procedure.
-* Used to compute CCS directions and evaluate the empirical separation accuracy (ESA) and introduced metrics: polar consistency (PC), and contradiction index (CI).
+- Implements the linear probing training and evaluation procedure.
+- Used to compute CCS directions and evaluate the empirical separation accuracy (ESA) and introduced metrics: polar consistency (PC), and contradiction index (CI).
 
 ##### `extract.py`
 
@@ -102,15 +124,15 @@ Script for extracting representations from LLaMA — just `extract.py` adapted f
 
 Post-processing utility that:
 
-* Aggregates layerwise metric results (ESA, PC, CI).
-* Computes group statistics (means, std, confidence intervals).
-* Formats results for plotting or tabular reporting.
+- Aggregates layerwise metric results (ESA, PC, CI).
+- Computes group statistics (means, std, confidence intervals).
+- Formats results for plotting or tabular reporting.
 
 ##### Usage Notes
 
-* All scripts assume that the input data is already formatted as sentence pairs with polarity labels.
-* The dataset with pairs should be organized as follows. From $0, 1, 2 .... N$ sentences, the first $\frac{N}{2}$ harm (or safe) and the next $\frac{N}{2}$ safe (or harm). For 0, the pair index is $\frac{N}{2}$, for 1, the pair index is $\frac{N}{2} + 1$ and so on.
-* The model interface is built on top of HuggingFace converters.
+- All scripts assume that the input data is already formatted as sentence pairs with polarity labels.
+- The dataset with pairs should be organized as follows. From $0, 1, 2 .... N$ sentences, the first $\frac{N}{2}$ harm (or safe) and the next $\frac{N}{2}$ safe (or harm). For 0, the pair index is $\frac{N}{2}$, for 1, the pair index is $\frac{N}{2} + 1$ and so on.
+- The model interface is built on top of HuggingFace converters.
 
 #### **`notebooks/` — PA-CCS Evaluation Notebooks**
 
@@ -118,28 +140,27 @@ This folder contains Jupyter notebooks for running and plotting **Polarity-Aware
 
 ##### Files
 
-* **`ccs_deberta_pretr.ipynb`**
+- **`ccs_deberta_pretr.ipynb`**
   Runs CCS and PA-CCS on **DeBERTa-large-FT** (`Elron/deberta-v3-large-hate`). Includes:
 
- * Extract hidden representations
- * PA-CCC training
- * Calculate and format ESA/PC/CI metrics
- * Visual diagnostics of metrics and separations
+- Extract hidden representations
+- PA-CCC training
+- Calculate and format ESA/PC/CI metrics
+- Visual diagnostics of metrics and separations
 
-* **`ccs_Meta-Llama-3-8B-Instruct.ipynb`**
+- **`ccs_Meta-Llama-3-8B-Instruct.ipynb`**
   Applies PA-CCS to **Meta-LLaMA-3 8B Instruct** using reformulated harmful-safe statement pairs. Includes:
 
- * Extract hidden representations
- * PA-CCC training
- * Calculate and format ESA/PC/CI metrics
- * Visual diagnostics of metrics and separations
+- Extract hidden representations
+- PA-CCC training
+- Calculate and format ESA/PC/CI metrics
+- Visual diagnostics of metrics and separations
 
 #### **`data/` — datasets introduced in paper**
 
-
 #### Requirements
 
-* Python ≥ 3.9
-* `transformers`, `torch`, `datasets`, `numpy`, `scikit-learn`, `matplotlib`, `seaborn`, `pandas`, `sentencepiece
+- Python ≥ 3.9
+- `transformers`, `torch`, `datasets`, `numpy`, `scikit-learn`, `matplotlib`, `seaborn`, `pandas`, `sentencepiece
 `, `accelerate`, `tqdm`
-* For LLaMA models: use HF-compatible checkpoints (with proper access)
+- For LLaMA models: use HF-compatible checkpoints (with proper access)
