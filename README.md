@@ -13,12 +13,17 @@ Recent progress in unsupervised probing methods, notably <span style="color:blue
 The paper includes the release of new datasets containing contrasting pairs of "harmful/benign" statements. You can download datasets on Huggingface: [mixed dataset](https://huggingface.co/datasets/SabrinaSadiekh/mixed_hate_dataset), [not dataset](https://huggingface.co/datasets/SabrinaSadiekh/not_hate_dataset).
 
 #### **Data details** 
+
 - Mixed dataset
-This dataset contains 1244 unique observations, 622 harm-safe pairs, constructed using two 1. *concurrent-based*, where harmful and safe statements differ by rephrasing, while preserving semantic opposition, 74.7%.
+
+This dataset contains 1244 unique observations, 622 harm-safe pairs, constructed using two 
+
+1. *concurrent-based*, where harmful and safe statements differ by rephrasing, while preserving semantic opposition, 74.7%.
 2. *negation-based*, where one of the statements is the syntactic negation of the other.
 This dataset tests whether CCS can distinguish harmful from safe beliefs in realistic, naturally varied formulations, 26.3%
 
 - Not dataset
+
 This dataset contains 1250 samples in total, all constructed strictly via negation, such that for each pair, either $x^{\text{harm}} = \texttt{not}(x^{\text{safe}})$ or $x^{\text{safe}} = \texttt{not}(x^{\text{harm}})$. In the harmful version 51\% of pairs contain the word \texttt{not} and in the safe category 49\%. This controlled negation setting allows direct evaluation of how the model handles polarity flips in tightly aligned sentences.
 
 
