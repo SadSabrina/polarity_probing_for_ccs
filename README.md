@@ -38,12 +38,12 @@ The paper includes the release of new datasets containing contrasting pairs of "
 <tr>
 <td>Concurrent-based</td>
 <td>Harmful and safe statements differ by rephrasing, while preserving semantic opposition</td>
-<td>74.7%</td>
+<td>72.3%</td>
 </tr>
 <tr>
 <td>Negation-based</td>
 <td>One statement is the syntactic negation of the other</td>
-<td>26.3%</td>
+<td>27.7%</td>
 </tr>
 <tr>
 <td colspan="4"><strong>"Not" Dataset</strong></td>
