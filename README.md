@@ -49,14 +49,14 @@ The paper includes the release of new datasets containing contrasting pairs of "
 <td colspan="4"><strong>"Not" Dataset</strong></td>
 </tr>
 <tr>
-<td>Harmful version</td>
-<td>Contains "not" in 51% of pairs where $x^{\text{harm}} = \texttt{not}(x^{\text{safe}})$ or vice versa</td>
-<td>51%</td>
+<td>Harmful sentences (625)</td>
+<td>Contains "not" in 27% of statements where $\texttt{not}(x^{\text{harm}}) = x^{\text{safe}}$</td>
+<td>27%</td>
 </tr>
 <tr>
-<td>Safe version</td>
-<td>Controlled negation setting with tightly aligned sentences</td>
-<td>49%</td>
+<td>Safe sentences</td>
+<td>Contains "not" in 27% of statements where $x^{\text{harm}} = \texttt{not}(x^{\text{safe}}$)</td>
+<td>73%</td>
 </tr>
 </tbody>
 </table>
