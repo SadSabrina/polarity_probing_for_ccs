@@ -4,6 +4,19 @@ Source code for the paper ["Polarity-Aware Probing for Quantifying Latent Alignm
 
 ![img](https://raw.githubusercontent.com/SadSabrina/ccs_2/refs/heads/main/teaser/ccs_teaser.png)
 
+---
+## **How to use this repository?**
+
+The primary goal of this repository is to ensure the reproducibility of the results of "Polarity-Aware Probing for Quantifying Latent Alignment in Language Models." However, we encourage you to use our results not only for correctness analysis but also for your own research. You can:
+
+1. Explore the behavior of metrics on your own models and analyze internal polarity compared to the model output.
+2. Use datasets balanced by categories and utterance types in your experiments. Datasets are available for download in the HF ([mixed dataset](https://huggingface.co/datasets/SabrinaSadiekh/mixed_hate_dataset), [not dataset](https://huggingface.co/datasets/SabrinaSadiekh/not_hate_dataset)).
+3. Use visualizations in presentations and lectures on the geometric organization of data within a model.
+4. Explore the file `Supplementaty materials for the paper` to find details about Related works, List of Models Used in Experiments, Performance Metrics by Model Architecture, Separation Analysis, Robustness of Results on Meaningless
+Placeholder and Examples of pairs from data sets.
+
+---
+
 ## **Abstract**
 
 Recent progress in unsupervised probing methods, notably Contrast‑Consistent Search (CCS) (Stoehr et al. 2024), has enabled the extraction of latent beliefs in language models without relying on token-level outputs. As these probes offer lightweight diagnostic tools with low alignment tax, a central question arises: *can they effectively assess model alignment?* We investigate this by examining CCS's sensitivity to harmful vs. safe statements and introducing Polarity‑Aware CCS (PA‑CCS), which evaluates whether a model's internal representations remain consistent under polarity inversion. We propose two alignment-oriented metrics — **Polar‑Consistency** and **Contradiction Index** — to quantify the semantic robustness of a model's latent knowledge. To validate PA-CCS, we curate **two main and one control datasets** containing matched harmful-safe sentence pairs formulated by different methods (concurrent and antagonistic statements), and apply PA-CCS to **16 language models**. Our results demonstrate that PA‑CCS reveals both architectural and layer-specific differences in the encoding of latent harmful knowledge. Interestingly, replacing the negation token with a meaningless marker degrades the PA‑CCS scores of models with aligned representations. In contrast, models lacking robust internal calibration do not show this degradation. Our findings highlight the potential of unsupervised probing for alignment evaluation and call on the community to incorporate structural robustness checks into interpretability benchmarks.
@@ -60,16 +73,6 @@ The paper includes the release of new datasets containing contrasting pairs of "
 </tr>
 </tbody>
 </table>
-
----
-
-## **How to use this repository?**
-
-The primary goal of this repository is to ensure the reproducibility of the results of "Polarity-Aware Probing for Quantifying Latent Alignment in Language Models." However, we encourage you to use our results not only for correctness analysis but also for your own research. You can:
-
-1. Explore the behavior of metrics on your own models and analyze internal polarity compared to the model output.
-2. Use datasets balanced by categories and utterance types in your experiments. Datasets are available for download in the HF ([mixed dataset](https://huggingface.co/datasets/SabrinaSadiekh/mixed_hate_dataset), [not dataset](https://huggingface.co/datasets/SabrinaSadiekh/not_hate_dataset)).
-3. Use visualizations in presentations and lectures on the geometric organization of data within a model.
 
 ---
 ---
