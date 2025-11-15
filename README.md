@@ -5,17 +5,6 @@ Source code for the paper ["Polarity-Aware Probing for Quantifying Latent Alignm
 ![img](https://raw.githubusercontent.com/SadSabrina/ccs_2/refs/heads/main/teaser/ccs_teaser.png)
 
 ---
-## **How to use this repository?**
-
-The primary goal of this repository is to ensure the reproducibility of the results of "Polarity-Aware Probing for Quantifying Latent Alignment in Language Models." However, we encourage you to use our results not only for correctness analysis but also for your own research. You can:
-
-1. Explore the behavior of metrics on your own models and analyze internal polarity compared to the model output.
-2. Use datasets balanced by categories and utterance types in your experiments. Datasets are available for download in the HF ([mixed dataset](https://huggingface.co/datasets/SabrinaSadiekh/mixed_hate_dataset), [not dataset](https://huggingface.co/datasets/SabrinaSadiekh/not_hate_dataset)).
-3. Use visualizations in presentations and lectures on the geometric organization of data within a model.
-4. Explore the file `Supplementaty materials for the paper` to find details about Related works, List of Models Used in Experiments, Performance Metrics by Model Architecture, Separation Analysis, Robustness of Results on Meaningless
-Placeholder and Examples of pairs from data sets.
-
----
 
 ## **Abstract**
 
@@ -74,6 +63,17 @@ The paper includes the release of new datasets containing contrasting pairs of "
 </tbody>
 </table>
 
+---
+
+## **How to use this repository?**
+
+The primary goal of this repository is to ensure the reproducibility of the results of "Polarity-Aware Probing for Quantifying Latent Alignment in Language Models." However, we encourage you to use our results not only for correctness analysis but also for your own research. You can:
+
+1. Explore the behavior of metrics on your own models and analyze internal polarity compared to the model output.
+2. Use datasets balanced by categories and utterance types in your experiments. Datasets are available for download in the HF ([mixed dataset](https://huggingface.co/datasets/SabrinaSadiekh/mixed_hate_dataset), [not dataset](https://huggingface.co/datasets/SabrinaSadiekh/not_hate_dataset)).
+3. Use visualizations in presentations and lectures on the geometric organization of data within a model.
+4. Explore the file `Supplementaty materials for the paper` to find details about Related works, List of Models Used in Experiments, Performance Metrics by Model Architecture, Separation Analysis, Robustness of Results on Meaningless
+Placeholder and Examples of pairs from data sets.
 ---
 ---
 
